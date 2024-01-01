@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  display: none; // grid switch for popup
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10rem;
+}
+
+#header_books {
+  margin-left: 20%;
+}
+
+#book {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 240px;
+  margin: 0.5rem;
+  box-shadow: 0px 0px 16px 0px #00000014;
+}
+
+.bookwrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book_line {
+  width: 3px;
+  height: 15rem;
+  margin-left: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 28.65%,
+    rgba(0, 0, 0, 0.4) 67.71%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.book_box-text {
+  display: flex;
+  flex-direction: column-reverse;
+  color: white;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.book-text {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.book-head {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.book_one {
+  background: linear-gradient(200deg, #fdfd96, #f2c94c),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_two {
+  background: linear-gradient(200deg, #edbb8e, #f2994a),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_three {
+  background: linear-gradient(200deg, #e66a6a, #eb5757),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_four {
+  background: linear-gradient(200deg, #b987e9, #9b51e0),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_five {
+  background: linear-gradient(200deg, #a3d7e8, #56ccf2),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_six {
+  background: linear-gradient(200deg, #77a5e0, #2f80ed),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_seven {
+  background: linear-gradient(200deg, #9ee3bb, #6fcf97),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+.book_eight {
+  background: linear-gradient(200deg, #4dac74, #27ae60),
+    linear-gradient(
+      208.29deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    );
+}
+
+#popup {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #27ae60;
+}
