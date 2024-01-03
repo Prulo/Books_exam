@@ -16,7 +16,7 @@
   margin-left: 20%;
 }
 
-#book {
+.book {
   display: flex;
   flex-direction: row;
   width: 200px;
@@ -70,7 +70,7 @@
   text-align: left;
 }
 
-.book_one {
+#book_6 {
   background: linear-gradient(200deg, #fdfd96, #f2c94c),
     linear-gradient(
       208.29deg,
@@ -78,7 +78,7 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_two {
+#book_7 {
   background: linear-gradient(200deg, #edbb8e, #f2994a),
     linear-gradient(
       208.29deg,
@@ -86,7 +86,7 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_three {
+#book_8 {
   background: linear-gradient(200deg, #e66a6a, #eb5757),
     linear-gradient(
       208.29deg,
@@ -94,15 +94,15 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_four {
-  background: linear-gradient(200deg, #b987e9, #9b51e0),
+#book_4 {
+  background: linear-gradient(200deg, #bd9adf, #9b51e0),
     linear-gradient(
       208.29deg,
       rgba(255, 255, 255, 0.5) 0%,
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_five {
+#book_5 {
   background: linear-gradient(200deg, #a3d7e8, #56ccf2),
     linear-gradient(
       208.29deg,
@@ -110,7 +110,7 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_six {
+#book_1 {
   background: linear-gradient(200deg, #77a5e0, #2f80ed),
     linear-gradient(
       208.29deg,
@@ -118,7 +118,7 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_seven {
+#book_3 {
   background: linear-gradient(200deg, #9ee3bb, #6fcf97),
     linear-gradient(
       208.29deg,
@@ -126,8 +126,8 @@
       rgba(255, 255, 255, 0) 92.13%
     );
 }
-.book_eight {
-  background: linear-gradient(200deg, #4dac74, #27ae60),
+#book_2 {
+  background: linear-gradient(200deg, #67bc8a, #27ae60),
     linear-gradient(
       208.29deg,
       rgba(255, 255, 255, 0.5) 0%,
@@ -136,7 +136,7 @@
 }
 
 #popup {
-  display: block;
+  display: none;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(0deg, #222222, #222222),
