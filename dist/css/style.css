@@ -5,7 +5,7 @@
 }
 
 #wrapper {
-  display: none; // grid switch for popup
+  display: grid;
   flex-direction: column;
   width: 70%;
   margin: 0 auto;
@@ -54,12 +54,13 @@
 
 .book-text {
   font-family: Roboto;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 14px;
   letter-spacing: 0em;
   text-align: left;
 }
+
 .book-head {
   font-family: Roboto;
   font-size: 18px;
@@ -135,8 +136,113 @@
 }
 
 #popup {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    background-color: #27ae60;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, #222222, #222222),
+    linear-gradient(0deg, #eeeeee, #eeeeee);
+  position: relative;
+}
+
+#wrapper_popup {
+  display: flex;
+  justify-self: center;
+  margin-top: 15rem;
+}
+
+#book_popup {
+  width: 389px;
+  height: 464px;
+  display: flex;
+  flex-direction: row;
+}
+
+#book-popup-text {
+  width: 389px;
+  height: 464px;
+  margin-left: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#book_wrapper-text {
+  display: flex;
+  flex-direction: column-reverse;
+  color: rgb(0, 0, 0);
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+#book_line-pop {
+  width: 6px;
+  height: 464px;
+  margin-left: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 28.65%,
+    rgba(0, 0, 0, 0.4) 67.71%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+#book_list {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  background: #c4c4c414;
+  align-items: center;
+  height: 70px;
+}
+
+.book-text-pop {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.book-head-pop {
+  font-family: Roboto;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#book_btn {
+  width: 188px;
+  height: 48px;
+  border-radius: 4px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.book-info {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  opacity: 70%;
+}
+
+#back-pop {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 10rem;
+  left: 35rem;
+  background: #8a8a8a;
+  border-style: none;
 }
