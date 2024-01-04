@@ -1,16 +1,17 @@
-const backpage: HTMLElement | null = document.getElementById("popup");
-const openpage: HTMLElement | null = document.getElementById("wrapper");
-const books: NodeListOf<HTMLElement> = document.querySelectorAll(".book");
-const backbtn: HTMLElement | null = document.getElementById("back-pop");
-const bookInfo = document.getElementById("book-info");
-const audienceElement = document.getElementById("audience");
-const publishedElement = document.getElementById("published");
-const pagesElement = document.getElementById("Pages");
-const publisherElement = document.getElementById("Publisher");
-const bookHeadPopCollection = document.getElementById("book-head-pop");
-const bookTextPopCollection = document.getElementById("book-text-pop");
-const bookHeadPopColllection = document.getElementById("book-head-popp");
-const bookTextPopColllection = document.getElementById("book-text-popp");
+import { Book } from "bookModule";
+
+const backpage: HTMLElement = document.getElementById("popup")!;
+const openpage: HTMLElement = document.getElementById("wrapper")!;
+const books: NodeListOf<HTMLElement> = document.querySelectorAll(".book")!;
+const backbtn: HTMLElement = document.getElementById("back-pop")!;
+const bookInfo: HTMLElement = document.getElementById("book-info")!;
+const audienceElement: HTMLElement = document.getElementById("audience")!;
+const publishedElement: HTMLElement = document.getElementById("published")!;
+const pagesElement: HTMLElement = document.getElementById("Pages")!;
+const publisherElement: HTMLElement = document.getElementById("Publisher")!;
+const bookHeadPopCollection: HTMLElement = document.getElementById("book-head-pop")!;
+const bookTextPopCollection: HTMLElement = document.getElementById("book-text-pop")!;
+const bookcolor: HTMLElement = document.getElementById("book_popup")!;
 let booksData: Book[] = [];
 
 function openPopup(): void {
@@ -23,15 +24,6 @@ function closePopup(): void {
   openpage.style.display = "grid";
 }
 
-interface Book {
-  audience: string;
-  title: string;
-  author: string;
-  pages: number;
-  year: number;
-  publisher: string;
-  plot: string;
-}
 
 fetch(
   "https://my-json-server.typicode.com/zocom-christoffer-wallenberg/books-api/books"
@@ -44,48 +36,62 @@ fetch(
   })
   .then((data: Book[]) => {
     console.log(data);
-    booksData = data; // Assign the fetched data to booksData
+    booksData = data;
+    booksData.forEach((book, index) => {
+      updateBookInformation(book, index, true);
+    });
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
 
-function updateBookInformation(booksData: Book[]): void {
-  // Iterate through each book and update the content in HTML
-  booksData.forEach((book: Book, index: number) => {
-    const bookSection = document.getElementById(`book_${index + 1}`);
-    
-    if (bookHeadPopCollection && bookTextPopCollection && bookInfo && audienceElement && publishedElement && pagesElement && publisherElement) {
-      console.log("dogshit");
-      console.log(book);
-      
-    
-      bookHeadPopCollection.textContent = book.title;
-      bookTextPopCollection.textContent = book.author;
-      bookInfo.textContent = book.plot;
-      audienceElement.textContent = `Audience: ${book.audience}`;
-      publishedElement.textContent = `First published: ${book.year}`;
-      pagesElement.textContent = `Pages: ${book.pages}`;
-      publisherElement.textContent = `Publisher: ${book.publisher}`;
+function updateBookInformation(
+  book: Book,
+  index: number,
+  section: boolean
+): void {
+  const bookSection = document.getElementById(`book_${index + 1}`);
+  let bookText: HTMLParagraphElement;
+  let bookHead: HTMLHeadingElement;
+  if (bookSection) {
+    if (section) {
+      bookText = bookSection.querySelector(`.book-text`);
+      bookHead = bookSection.querySelector(`.book-head`);
+    } else {
+      bookText = document.querySelector(`.details-text`);
+      bookHead = document.querySelector(`.details-head`);
     }
-
-    if (bookSection) {
-      const bookText = bookSection.querySelector(".book-text");
-      const bookHead = bookSection.querySelector(".book-head");
-
-      if (bookText && bookHead) {
-        bookText.textContent = `Author: ${book.author}`;
-        bookHead.textContent = `Title: ${book.title}`;
-      }
+    bookSection.style.backgroundColor = book.color;
+    if (bookText && bookHead) {
+      bookText.textContent = book.author;
+      bookHead.textContent = book.title;
     }
-  });
+  }
+}
+
+function updateBookDetails(book: Book): void {
+  if (
+    bookHeadPopCollection && bookTextPopCollection && bookInfo && audienceElement && publishedElement && pagesElement && publisherElement
+  ) {
+    console.log(book);
+
+    bookcolor.style.backgroundColor = book.color;
+    bookHeadPopCollection.textContent = book.title;
+    bookTextPopCollection.textContent = book.author;
+    bookInfo.textContent = book.plot;
+    audienceElement.textContent = `Audience: ${book.audience}`;
+    publishedElement.textContent = `First published: ${book.year}`;
+    pagesElement.textContent = `Pages: ${book.pages}`;
+    publisherElement.textContent = `Publisher: ${book.publisher}`;
+  }
 }
 
 books.forEach((bookElement: HTMLElement, index: number) => {
   bookElement.addEventListener("click", function () {
-    const clickedBook = booksData[index];
+    const clickedBook: Book = booksData[index];
     console.log(clickedBook);
     openPopup();
-    updateBookInformation([clickedBook]); // Pass an array with a single book
+    updateBookInformation(clickedBook, index, false);
+    updateBookDetails(clickedBook);
   });
 });

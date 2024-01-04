@@ -9,8 +9,7 @@ const pagesElement = document.getElementById("Pages");
 const publisherElement = document.getElementById("Publisher");
 const bookHeadPopCollection = document.getElementById("book-head-pop");
 const bookTextPopCollection = document.getElementById("book-text-pop");
-const bookHeadPopColllection = document.getElementById("book-head-popp");
-const bookTextPopColllection = document.getElementById("book-text-popp");
+const bookcolor = document.getElementById("book_popup");
 let booksData = [];
 function openPopup() {
     backpage.style.display = "grid";
@@ -29,41 +28,54 @@ fetch("https://my-json-server.typicode.com/zocom-christoffer-wallenberg/books-ap
 })
     .then((data) => {
     console.log(data);
-    booksData = data; // Assign the fetched data to booksData
+    booksData = data;
+    booksData.forEach((book, index) => {
+        updateBookInformation(book, index, true);
+    });
 })
     .catch((error) => {
     console.error("Error fetching data:", error);
 });
-function updateBookInformation(booksData) {
-    // Iterate through each book and update the content in HTML
-    booksData.forEach((book, index) => {
-        const bookSection = document.getElementById(`book_${index + 1}`);
-        if (bookHeadPopCollection && bookTextPopCollection && bookInfo && audienceElement && publishedElement && pagesElement && publisherElement) {
-            console.log("dogshit");
-            console.log(book);
-            bookHeadPopCollection.textContent = book.title;
-            bookTextPopCollection.textContent = book.author;
-            bookInfo.textContent = book.plot;
-            audienceElement.textContent = `Audience: ${book.audience}`;
-            publishedElement.textContent = `First published: ${book.year}`;
-            pagesElement.textContent = `Pages: ${book.pages}`;
-            publisherElement.textContent = `Publisher: ${book.publisher}`;
+function updateBookInformation(book, index, section) {
+    const bookSection = document.getElementById(`book_${index + 1}`);
+    let bookText;
+    let bookHead;
+    if (bookSection) {
+        if (section) {
+            bookText = bookSection.querySelector(`.book-text`);
+            bookHead = bookSection.querySelector(`.book-head`);
         }
-        if (bookSection) {
-            const bookText = bookSection.querySelector(".book-text");
-            const bookHead = bookSection.querySelector(".book-head");
-            if (bookText && bookHead) {
-                bookText.textContent = `Author: ${book.author}`;
-                bookHead.textContent = `Title: ${book.title}`;
-            }
+        else {
+            bookText = document.querySelector(`.details-text`);
+            bookHead = document.querySelector(`.details-head`);
         }
-    });
+        bookSection.style.backgroundColor = book.color;
+        if (bookText && bookHead) {
+            bookText.textContent = book.author;
+            bookHead.textContent = book.title;
+        }
+    }
+}
+function updateBookDetails(book) {
+    if (bookHeadPopCollection && bookTextPopCollection && bookInfo && audienceElement && publishedElement && pagesElement && publisherElement) {
+        console.log(book);
+        bookcolor.style.backgroundColor = book.color;
+        bookHeadPopCollection.textContent = book.title;
+        bookTextPopCollection.textContent = book.author;
+        bookInfo.textContent = book.plot;
+        audienceElement.textContent = `Audience: ${book.audience}`;
+        publishedElement.textContent = `First published: ${book.year}`;
+        pagesElement.textContent = `Pages: ${book.pages}`;
+        publisherElement.textContent = `Publisher: ${book.publisher}`;
+    }
 }
 books.forEach((bookElement, index) => {
     bookElement.addEventListener("click", function () {
         const clickedBook = booksData[index];
         console.log(clickedBook);
         openPopup();
-        updateBookInformation([clickedBook]); // Pass an array with a single book
+        updateBookInformation(clickedBook, index, false);
+        updateBookDetails(clickedBook);
     });
 });
+
